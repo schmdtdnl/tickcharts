@@ -1,8 +1,9 @@
 <?php
 require_once('TickReport.php');
 require_once('TickChart.php');
+require_once('config.php');
 
-$report = new TickReport('*****', '*****', '*****');
+$report = new TickReport($config['company'], $config['email'], $config['password']);
 $charts = new TickChartMonthlyTime($report);
 
 switch ($_GET['f'])
