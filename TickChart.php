@@ -122,11 +122,11 @@ class TickChartMonthlyTime extends TickChart
 
 		$sum_time = 0; 
 		$sum_daily_money = 0;
-
+		
 		foreach ($daily_hours as $day => $one)
 		{
-
 			// idő százalék
+
 			$sum_time += $one['time'];
 			$time_percent = ($sum_time  / $sum_budget) * 100;
 			
@@ -142,6 +142,16 @@ class TickChartMonthlyTime extends TickChart
 				$time_percent,
 				$daily_data[$one['day']][2],
 			);
+		}
+		
+		$prev_time_percent = 0;
+		for ($i = 0 ; $i < count($daily_data) ; $i++)
+		{
+			if ($daily_data[$i][1] == 0)
+			{
+				$daily_data[$i][1] = $prev_time_percent;
+			}
+			$prev_time_percent = $daily_data[$i][1];
 		}
 		
 		$return_data = array
