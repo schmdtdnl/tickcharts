@@ -9,6 +9,7 @@ function drawChart(data)
 	
 	var options = {
 		title: data[0],
+		curveType: 'function',
 		hAxis: {
 			viewWindow: {
 				max: max_days,
